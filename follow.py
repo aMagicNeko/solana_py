@@ -12,6 +12,7 @@ import json
 import threading
 import time
 from wallet import *
+
 def get_latest_transactions(address: Pubkey, tx_client: Client, known_signatures:set):
     # 获取最近的20个交易签名
     response = json.loads(tx_client.get_signatures_for_address(address, limit=1000).to_json())

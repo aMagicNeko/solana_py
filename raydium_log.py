@@ -2,7 +2,7 @@ import base64
 import struct
 from dataclasses import dataclass
 from enum import Enum
-
+import json
 class LogType(Enum):
     Init = 0
     Deposit = 1
@@ -78,6 +78,9 @@ class SwapBaseOutLog:
     pool_coin: int
     pool_pc: int
     deduct_in: int
+
+def is_ray_log(log: str):
+    return log.startswith('Program log: ray_log: ')
 
 def parse_log(log: str):
     # Remove the 'Program log: ray_log: ' prefix if present
